@@ -23,7 +23,7 @@ export default function Home() {
     <div className="space-y-8">
       <div className="text-center">
         <h1 className="font-headline text-4xl font-bold tracking-tight lg:text-5xl">
-          Find Your Perfect Insurance
+          The One Financial Place
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Compare and subscribe to the best plans from top providers.
