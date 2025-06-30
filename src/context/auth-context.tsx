@@ -3,12 +3,12 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import type {FC} from 'react';
 
-type UserRole = 'provider' | 'customer' | null;
+type UserRole = 'provider' | 'customer' | 'admin' | null;
 
 interface AuthContextType {
   userRole: UserRole;
   loading: boolean;
-  login: (role: 'provider' | 'customer') => void;
+  login: (role: 'provider' | 'customer' | 'admin') => void;
   logout: () => void;
 }
 
@@ -24,7 +24,7 @@ export const AuthProvider: FC<{children: ReactNode}> = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (role: 'provider' | 'customer') => {
+  const login = (role: 'provider' | 'customer' | 'admin') => {
     setUserRole(role);
   };
 

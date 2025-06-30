@@ -1,9 +1,32 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatsCard from "@/components/admin/stats-card";
 import OverviewChart from "@/components/admin/overview-chart";
-import { DollarSign, Users, Briefcase, Activity } from "lucide-react";
+import { DollarSign, Users, Briefcase, Activity, Loader2 } from "lucide-react";
 
 export default function AdminDashboardPage() {
+    const { userRole, loading } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!loading && userRole !== 'admin') {
+        router.push('/login');
+        }
+    }, [userRole, loading, router]);
+
+    if (loading || userRole !== 'admin') {
+        return (
+        <div className="flex flex-col items-center justify-center text-center p-8 min-h-[calc(100vh-200px)]">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+            <p className="text-muted-foreground mt-4">Verifying access...</p>
+        </div>
+        );
+    }
+
     return (
         <div className="space-y-8">
             <div className="text-center">

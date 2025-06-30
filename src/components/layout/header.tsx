@@ -24,10 +24,15 @@ export default function Header() {
   ];
 
   const navLinks = allNavLinks.filter(link => {
-    if (link.href === '/provider/dashboard') {
-      return userRole === 'provider';
+    switch (link.href) {
+      case '/provider/dashboard':
+        return userRole === 'provider';
+      case '/admin/dashboard':
+        return userRole === 'admin';
+      default:
+        // Show other links like Marketplace
+        return true;
     }
-    return true;
   });
 
   const renderLink = (link: {href: string, label: string}) => (
