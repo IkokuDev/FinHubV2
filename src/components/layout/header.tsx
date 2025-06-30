@@ -5,13 +5,9 @@ import { usePathname } from "next/navigation";
 import { Leaf } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 
-const publicLinks = [
+const navLinks = [
   { href: "/", label: "Marketplace" },
-];
-
-const protectedLinks = [
   { href: "/provider/dashboard", label: "Provider Portal" },
   { href: "/admin/dashboard", label: "Admin Dashboard" },
 ];
@@ -44,24 +40,8 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-1">
-            {publicLinks.map(renderLink)}
-            <SignedIn>
-              {protectedLinks.map(renderLink)}
-            </SignedIn>
+            {navLinks.map(renderLink)}
           </nav>
-          <div className="flex items-center gap-2">
-              <SignedOut>
-                  <SignInButton mode="modal">
-                      <Button variant="ghost">Sign In</Button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                      <Button>Sign Up</Button>
-                  </SignUpButton>
-              </SignedOut>
-              <SignedIn>
-                  <UserButton afterSignOutUrl="/" />
-              </SignedIn>
-          </div>
         </div>
       </div>
     </header>
