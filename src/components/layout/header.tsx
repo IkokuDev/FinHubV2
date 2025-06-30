@@ -7,12 +7,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth-context";
 
-const navLinks = [
-  { href: "/", label: "Marketplace" },
-  { href: "/provider/dashboard", label: "Provider Portal" },
-  { href: "/admin/dashboard", label: "Admin Dashboard" },
-];
-
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
@@ -22,6 +16,19 @@ export default function Header() {
     logout();
     router.push('/');
   };
+  
+  const allNavLinks = [
+    { href: "/", label: "Marketplace" },
+    { href: "/provider/dashboard", label: "Provider Portal" },
+    { href: "/admin/dashboard", label: "Admin Dashboard" },
+  ];
+
+  const navLinks = allNavLinks.filter(link => {
+    if (link.href === '/provider/dashboard') {
+      return userRole === 'provider';
+    }
+    return true;
+  });
 
   const renderLink = (link: {href: string, label: string}) => (
     <Button
