@@ -20,15 +20,18 @@ export default function Header() {
   
   const allNavLinks = [
     { href: "/", label: "Marketplace" },
+    { href: "/customer/dashboard", label: "Customer Portal" },
+    { href: "/provider/dashboard", label: "Provider Portal" },
+    { href: "/admin/dashboard", label: "Admin Dashboard" },
     { href: "/about", label: "About Us" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact Us" },
-    { href: "/provider/dashboard", label: "Provider Portal" },
-    { href: "/admin/dashboard", label: "Admin Dashboard" },
   ];
 
   const navLinks = allNavLinks.filter(link => {
     switch (link.href) {
+      case '/customer/dashboard':
+        return userRole === 'customer';
       case '/provider/dashboard':
         return userRole === 'provider';
       case '/admin/dashboard':

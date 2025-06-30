@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useAuth } from '@/context/auth-context';
@@ -17,7 +18,7 @@ export default function LoginPage() {
     } else if (role === 'admin') {
       router.push('/admin/dashboard');
     } else {
-      router.push('/');
+      router.push('/customer/dashboard');
     }
   };
 
