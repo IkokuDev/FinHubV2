@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Leaf } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Leaf, LogIn, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/auth-context";
 
 const navLinks = [
   { href: "/", label: "Marketplace" },
@@ -14,6 +15,13 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { userRole, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  };
 
   const renderLink = (link: {href: string, label: string}) => (
     <Button
@@ -42,6 +50,25 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map(renderLink)}
           </nav>
+          <div className="w-px h-6 bg-border mx-2 hidden md:block" />
+          {userRole ? (
+            <div className="flex items-center gap-4">
+                <span className="text-sm text-muted-foreground capitalize hidden sm:inline">
+                    Hi, {userRole}
+                </span>
+                <Button variant="outline" size="sm" onClick={handleLogout}>
+                    <LogOut className="mr-0 sm:mr-2 h-4 w-4" />
+                    <span className="hidden sm:inline">Logout</span>
+                </Button>
+            </div>
+          ) : (
+            <Button asChild>
+                <Link href="/login">
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
+                </Link>
+            </Button>
+          )}
         </div>
       </div>
     </header>
