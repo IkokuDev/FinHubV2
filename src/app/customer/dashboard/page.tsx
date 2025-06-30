@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatsCard from "@/components/admin/stats-card";
 import SpendingChart from "@/components/customer/spending-chart";
 import { CreditCard, Calendar, FileText, Loader2 } from "lucide-react";
+import WealthQuestionnaire from '@/components/customer/wealth-questionnaire';
 
 export default function CustomerDashboardPage() {
     const { userRole, loading } = useAuth();
@@ -68,6 +69,9 @@ export default function CustomerDashboardPage() {
                     <SpendingChart />
                 </CardContent>
             </Card>
+
+            <WealthQuestionnaire />
+
         </div>
     );
 }
