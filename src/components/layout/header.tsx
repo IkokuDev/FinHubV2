@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -19,6 +20,9 @@ export default function Header() {
   
   const allNavLinks = [
     { href: "/", label: "Marketplace" },
+    { href: "/about", label: "About Us" },
+    { href: "/faq", label: "FAQ" },
+    { href: "/contact", label: "Contact Us" },
     { href: "/provider/dashboard", label: "Provider Portal" },
     { href: "/admin/dashboard", label: "Admin Dashboard" },
   ];
