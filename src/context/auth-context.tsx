@@ -1,12 +1,13 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import type {FC} from 'react';
 
 type UserRole = 'provider' | 'customer' | null;
 
 interface AuthContextType {
   userRole: UserRole;
+  loading: boolean;
   login: (role: 'provider' | 'customer') => void;
   logout: () => void;
 }
@@ -15,6 +16,13 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: FC<{children: ReactNode}> = ({ children }) => {
   const [userRole, setUserRole] = useState<UserRole>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate checking for an existing session on app load.
+    // In a real app, this might involve checking localStorage or a session cookie.
+    setLoading(false);
+  }, []);
 
   const login = (role: 'provider' | 'customer') => {
     setUserRole(role);
@@ -25,7 +33,7 @@ export const AuthProvider: FC<{children: ReactNode}> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ userRole, login, logout }}>
+    <AuthContext.Provider value={{ userRole, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
