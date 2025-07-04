@@ -29,7 +29,7 @@ export default function PaymentForm({ price, isLoading, onSubmit }: PaymentFormP
             <Label htmlFor="card-number">Card Number</Label>
             <Input id="card-number" placeholder="1234 5678 9101 1121" />
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                   <Label htmlFor="expiry-date">Expiry</Label>
                   <Input id="expiry-date" placeholder="MM/YY" />
