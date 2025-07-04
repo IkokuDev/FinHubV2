@@ -126,7 +126,7 @@ export default function ServiceForm() {
                 name="price"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>Monthly Price ($)</FormLabel>
+                    <FormLabel>Monthly Price (₦)</FormLabel>
                     <FormControl>
                         <Input type="number" placeholder="e.g., 250" {...field} />
                     </FormControl>

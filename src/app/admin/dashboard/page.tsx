@@ -41,7 +41,7 @@ export default function AdminDashboardPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <StatsCard 
                     title="Total Revenue"
-                    value="$1,250,450"
+                    value="₦1,250,450"
                     change="+12.5% from last month"
                     icon={DollarSign}
                 />

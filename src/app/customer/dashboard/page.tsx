@@ -49,7 +49,7 @@ export default function CustomerDashboardPage() {
                 />
                 <StatsCard
                     title="Total Monthly Cost"
-                    value="$550"
+                    value="₦550"
                     change="Across all policies"
                     icon={CreditCard}
                 />

@@ -48,7 +48,7 @@ export default function PaymentForm({ price, isLoading, onSubmit }: PaymentFormP
           </p>
           <Button type="submit" className="w-full md:w-auto" disabled={isLoading}>
             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            {isLoading ? 'Processing...' : `Pay $${price}`}
+            {isLoading ? 'Processing...' : `Pay ₦${price}`}
           </Button>
         </form>
       </CardContent>

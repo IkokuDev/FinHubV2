@@ -67,7 +67,7 @@ export default function SubscribePage() {
               </div>
             </div>
             <div className="text-3xl font-bold font-headline text-primary self-start md:self-center">
-                ${product.price}
+                ₦{product.price}
                 <span className="text-sm font-normal text-muted-foreground">/mo</span>
             </div>
           </div>

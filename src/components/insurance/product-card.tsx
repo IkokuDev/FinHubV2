@@ -33,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </CardContent>
       <CardFooter className="flex justify-between items-center bg-muted/50 p-4">
         <div className="text-2xl font-bold font-headline text-primary">
-          ${product.price}
+          ₦{product.price}
           <span className="text-sm font-normal text-muted-foreground">/mo</span>
         </div>
         <Button asChild>
